@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.uk.androidrecruitmentapp.api.Resource" />
+        <import type="com.uk.androidrecruitmentapp.util.Status" />
+
+        <variable
+            name="resource"
+            type="Resource" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        app:visibleGone="@{resource.status == Status.LOADING &amp;&amp; !resource.isLoadNextPage}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <ProgressBar
+            app:visibleGone="@{resource.status == Status.LOADING}"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress_bar"
+            android:layout_margin="8dp" />
+    </LinearLayout>
+</layout>
+
